@@ -8,6 +8,8 @@ require 'country_select/tag_helper'
 
 if defined?(ActionView::Helpers::Tags::Base)
   require 'country_select/country_select_helper'
+# elsif something_for_Rails2.3_goes_here
+  # require 'country_select/rails2/country_select_helper'
 else
   require 'country_select/rails3/country_select_helper'
 end
