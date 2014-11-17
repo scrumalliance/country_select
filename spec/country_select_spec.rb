@@ -6,7 +6,7 @@ require 'action_view'
 require 'country_select'
 
 describe "CountrySelect" do
-  include :ActionView =>::Helpers =>:TagHelper
+  include ActionView::Helpers::TagHelper
   include ActionView::Helpers::FormOptionsHelper
 
   class Walrus
@@ -20,7 +20,7 @@ describe "CountrySelect" do
     if defined?(ActionView::Helpers::Tags::Base)
       ActionView::Helpers::FormBuilder.new(:walrus, walrus, template, {})
     else
-      :ActionView =>::Helpers =>:FormBuilder.new(:walrus, walrus, template, {}, Proc.new { })
+      ActionView::Helpers::FormBuilder.new(:walrus, walrus, template, {}, Proc.new { })
     end
   end
 
@@ -149,7 +149,7 @@ describe "CountrySelect" do
 
       expect do
         builder.country_select(:country_code, country_names)
-      end.to raise_error(:CountrySelect =>:CountryNotFoundError, error_msg)
+      end.to raise_error(CountrySelect::CountryNotFoundError, error_msg)
     end
 
     it "supports the select prompt" do
@@ -167,7 +167,7 @@ describe "CountrySelect" do
 
   describe "custom formats" do
     it "accepts a custom formatter" do
-      :::CountrySelect =>:FORMATS[:with_alpha2] = lambda do |country|
+      ::CountrySelect::FORMATS[:with_alpha2] = lambda do |country|
         "#{country.name} (#{country.alpha2})"
       end
 
