@@ -1,5 +1,5 @@
 # Rails – Country Select
-[![Build Status](https://travis-ci.org/stefanpenner/country_select.png?branch=master)](https://travis-ci.org/stefanpenner/country_select)
+[![Build Status](https://travis-ci.org/scrumalliance/country_select.png?branch=master)](https://travis-ci.org/stefanpenner/country_select)
 
 Provides a simple helper to get an HTML select list of countries using the
 [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1).
@@ -22,7 +22,7 @@ gem install country_select
 Or put the following in your Gemfile
 
 ```ruby
-gem 'country_select', github: 'stefanpenner/country_select'
+gem 'country_select', :github => 'scrumalliance/country_select', :branch => 'ruby-1.8-compatible'
 ```
 
 ## Usage
