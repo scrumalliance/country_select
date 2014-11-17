@@ -1,4 +1,4 @@
-# encoding: utf-8
+# :encoding => utf-8
 
 require 'spec_helper'
 
@@ -6,7 +6,7 @@ require 'action_view'
 require 'country_select'
 
 describe "CountrySelect" do
-  include ActionView::Helpers::TagHelper
+  include :ActionView =>::Helpers =>:TagHelper
   include ActionView::Helpers::FormOptionsHelper
 
   class Walrus
@@ -20,7 +20,7 @@ describe "CountrySelect" do
     if defined?(ActionView::Helpers::Tags::Base)
       ActionView::Helpers::FormBuilder.new(:walrus, walrus, template, {})
     else
-      ActionView::Helpers::FormBuilder.new(:walrus, walrus, template, {}, Proc.new { })
+      :ActionView =>::Helpers =>:FormBuilder.new(:walrus, walrus, template, {}, Proc.new { })
     end
   end
 
@@ -56,7 +56,7 @@ describe "CountrySelect" do
     tag = options_for_select([['États-Unis', 'US']], 'US')
 
     walrus.country_code = 'US'
-    t = builder.country_select(:country_code, locale: :fr)
+    t = builder.country_select(:country_code, :locale => :fr)
     expect(t).to include(tag)
   end
 
@@ -68,19 +68,19 @@ describe "CountrySelect" do
         ['Denmark', 'DK'],
         ['-'*15,'-'*15]
       ],
-      selected: 'US',
-      disabled: '-'*15
+      :selected => 'US',
+      :disabled => '-'*15
     )
 
     walrus.country_code = 'US'
-    t = builder.country_select(:country_code, priority_countries: ['LV','US','DK'])
+    t = builder.country_select(:country_code, :priority_countries => ['LV','US','DK'])
     expect(t).to include(tag)
   end
 
   it "selects only the first matching option" do
     tag = options_for_select([["United States of America", "US"],["Uruguay", "UY"]], "US")
     walrus.country_code = 'US'
-    t = builder.country_select(:country_code, priority_countries: ['LV','US'])
+    t = builder.country_select(:country_code, :priority_countries => ['LV','US'])
     expect(t).to_not include(tag)
   end
 
@@ -88,14 +88,14 @@ describe "CountrySelect" do
     options = [["Denmark", "DK"],["Germany", "DE"]]
     tag = builder.select(:country_code, options)
     walrus.country_code = 'US'
-    t = builder.country_select(:country_code, only: ['DK','DE'])
+    t = builder.country_select(:country_code, :only => ['DK','DE'])
     expect(t).to eql(tag)
   end
 
   it "discards some countries" do
     tag = options_for_select([["United States of America", "US"]])
     walrus.country_code = 'DE'
-    t = builder.country_select(:country_code, except: ['US'])
+    t = builder.country_select(:country_code, :except => ['US'])
     expect(t).to_not include(tag)
   end
 
@@ -108,8 +108,8 @@ describe "CountrySelect" do
           ['Denmark', 'DK'],
           ['-'*15,'-'*15]
         ],
-        selected: 'US',
-        disabled: '-'*15
+        :selected => 'US',
+        :disabled => '-'*15
       )
 
       walrus.country_code = 'US'
@@ -149,25 +149,25 @@ describe "CountrySelect" do
 
       expect do
         builder.country_select(:country_code, country_names)
-      end.to raise_error(CountrySelect::CountryNotFoundError, error_msg)
+      end.to raise_error(:CountrySelect =>:CountryNotFoundError, error_msg)
     end
 
     it "supports the select prompt" do
       tag = '<option value="">Select your country</option>'
-      t = builder.country_select(:country_code, prompt: 'Select your country')
+      t = builder.country_select(:country_code, :prompt => 'Select your country')
       expect(t).to include(tag)
     end
 
     it "supports the include_blank option" do
       tag = '<option value=""></option>'
-      t = builder.country_select(:country_code, include_blank: true)
+      t = builder.country_select(:country_code, :include_blank => true)
       expect(t).to include(tag)
     end
   end
 
   describe "custom formats" do
     it "accepts a custom formatter" do
-      ::CountrySelect::FORMATS[:with_alpha2] = lambda do |country|
+      :::CountrySelect =>:FORMATS[:with_alpha2] = lambda do |country|
         "#{country.name} (#{country.alpha2})"
       end
 

@@ -1,24 +1,24 @@
 language: ruby
 script: "bundle exec rspec"
-rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.2
-  - jruby-19mode
-  - jruby-head
-  - rbx-2
-  - ruby-head
-gemfile:
-  - gemfiles/actionpack3.2.gemfile
-  - gemfiles/actionpack4.0.gemfile
-  - gemfiles/actionpack4.1.gemfile
-  - gemfiles/actionpack4.2.gemfile
-  - gemfiles/actionpack.edge.gemfile
+# rvm:
+#   - 1.9.3
+#   - 2.0.0
+#   - 2.1.2
+#   - jruby-19mode
+#   - jruby-head
+#   - rbx-2
+#   - ruby-head
+# gemfile:
+#   - gemfiles/actionpack3.2.gemfile
+#   - gemfiles/actionpack4.0.gemfile
+#   - gemfiles/actionpack4.1.gemfile
+#   - gemfiles/actionpack4.2.gemfile
+#   - gemfiles/actionpack.edge.gemfile
 matrix:
   include:
     - rvm: 1.8.7
       gemfile: gemfiles/actionpack2.3.gemfile
-  allow_failures:
-    - rvm: ruby-head
-    - rvm: jruby-head
-    - rvm: rbx-2
+  # allow_failures:
+  #   - rvm: ruby-head
+  #   - rvm: jruby-head
+  #   - rvm: rbx-2
