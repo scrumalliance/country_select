@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gemspec :path => "../"
 
 gem "actionpack", "~> 2.3.18"
+gem 'pry', '~> 0.9.0'
 
 platforms :rbx do
   gem "racc"
