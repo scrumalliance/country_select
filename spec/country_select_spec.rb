@@ -174,7 +174,7 @@ describe "CountrySelect" do
       tag = options_for_select([['United States (US)', 'US']], 'US')
 
       walrus.country_code = 'US'
-      t = builder.country_select(:country_code, format: :with_alpha2)
+      t = builder.country_select(:country_code, :format => :with_alpha2)
       expect(t).to include(tag)
     end
   end
