@@ -92,7 +92,9 @@ RSpec.configure do |config|
   # non-default settings
   config.raise_errors_for_deprecations!
 
-  config.before do
-    I18n.config.enforce_available_locales = false
+  if I18n.config.respond_to?(:enforce_available_locales)
+    config.before do
+      I18n.config.enforce_available_locales = false
+    end
   end
 end
