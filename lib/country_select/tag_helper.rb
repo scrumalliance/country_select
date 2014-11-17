@@ -11,7 +11,8 @@ module CountrySelect
         priority_countries_options = country_options_for(priority_countries, false)
 
         option_tags = options_for_select(priority_countries_options, option_tags_options)
-        option_tags += html_safe_newline + options_for_select([priority_countries_divider], disabled: priority_countries_divider)
+        option_tags += html_safe_newline + options_for_select([priority_countries_divider],
+                                                              :disabled => priority_countries_divider)
 
         if priority_countries.include?(option_tags_options[:selected])
           option_tags_options[:selected] = nil
